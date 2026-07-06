@@ -1,7 +1,7 @@
 <div align="center">
   <br />
-  <img src="docs/logo.svg" alt="VisionGuard" width="72" />
-  <h1>VisionGuard</h1>
+  <img src="docs/logo.svg" alt="Crime-Vision" width="72" />
+  <h1>Crime-Vision</h1>
   <p><strong>Two-stage deep learning system for real-time crime classification in surveillance footage</strong></p>
 
   <p>
@@ -14,7 +14,7 @@
 
   <br />
 
-  <img src="docs/demo.png" alt="VisionGuard UI" width="860" />
+  <img src="docs/demo.png" alt="Crime-Vision UI" width="860" />
 
   <br /><br />
 
@@ -22,9 +22,9 @@
 
 ---
 
-## What is VisionGuard?
+## What is Crime-Vision?
 
-VisionGuard analyses short surveillance video clips and classifies criminal activity across **13 crime categories** using a two-stage deep learning pipeline. Upload a clip — the system tells you in under 300ms whether the footage is normal or flags the specific type of crime.
+Crime-Vision analyses short surveillance video clips and classifies criminal activity across **13 crime categories** using a two-stage deep learning pipeline. Upload a clip — the system tells you in under 300ms whether the footage is normal or flags the specific type of crime.
 
 Built as a portfolio project to demonstrate end-to-end ML engineering: dataset handling, model fine-tuning, production API design, and full-stack deployment.
 
