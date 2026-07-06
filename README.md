@@ -1,6 +1,6 @@
 <div align="center">
   <br />
-  <img src="docs/logo.svg" alt="Crime-Vision" width="72" />
+  <img src="docs/logo.png" alt="Crime-Vision" width="272" />
   <h1>Crime-Vision</h1>
   <p><strong>Two-stage deep learning system for real-time crime classification in surveillance footage</strong></p>
 
