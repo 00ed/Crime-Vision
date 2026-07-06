@@ -60,7 +60,7 @@ A single model trained only on crime footage would label *everything* as a crime
 
 ### Stage 2 — VideoMAE ViT-B (13-class crime classifier)
 
-> Trained on DCSASS · 16,639 clips · 17 epochs · Early stopping
+> Trained on DCSASS · 16,639 clips · 20 epochs · Early stopping
 
 | Class | Precision | Recall | F1 |
 |:--|:--:|:--:|:--:|
@@ -159,7 +159,7 @@ crime-vision/
 ### 1 — Clone the repository
 
 ```bash
-git clone https://github.com/your-username/crime-vision.git
+git clone https://github.com/00ed/crime-vision.git
 cd crime-vision
 ```
 
@@ -180,9 +180,6 @@ source venv/bin/activate
 ```bash
 # Windows
 copy .env.example .env
-
-# macOS / Linux
-cp .env.example .env
 ```
 
 Open `.env` and fill in your values:
@@ -197,15 +194,7 @@ HF_TOKEN=hf_xxxxxxxxxxxxxxxxxxxxxxxx
 
 ### 4 — Install Python dependencies
 
-**RTX 50 series (Blackwell — sm_120):**
 ```bash
-pip install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cu128
-pip install -r requirements.txt
-```
-
-**RTX 40 series and older (CUDA 12.1):**
-```bash
-pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
 pip install -r requirements.txt
 ```
 
@@ -241,7 +230,7 @@ python training/train_binary.py
 tensorboard --logdir logs
 ```
 
-> **Training time:** Stage 2 took ~17 epochs (~18 hours) on an RTX 5060 Ti.  
+> **Training time:** Stage 2 took ~20 epochs (~18 hours) on an RTX 5060 Ti.  
 > Stage 1 is significantly faster — X3D-S is 22× smaller than VideoMAE.
 
 <br />
@@ -358,18 +347,13 @@ Each original surveillance video was pre-segmented into short clips stored in su
 
 ## Author
 
-**Eyad Amer Alatifi**
-Bachelor's of Artificial Intelligence — Umm Al-Qura University
+**Eyad Alatifi**
 
-[![GitHub](https://img.shields.io/badge/GitHub-eyad--alatifi-181717?style=flat-square&logo=github)](https://github.com/eyad-alatifi)
+[![GitHub](https://img.shields.io/badge/GitHub-00ed-181717?style=flat-square&logo=github)](https://github.com/00ed)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Eyad_Alatifi-0a66c2?style=flat-square&logo=linkedin)](https://linkedin.com/in/eyad-alatifi)
 [![Email](https://img.shields.io/badge/Email-eyad.alatifi@gmail.com-ea4335?style=flat-square&logo=gmail)](mailto:eyad.alatifi@gmail.com)
 
 <br />
-
-## License
-
-This project is licensed under the MIT License — see [LICENSE](LICENSE) for details.
 
 ---
 
