@@ -10,7 +10,6 @@
     <img src="https://img.shields.io/badge/FastAPI-0.110-009688?style=flat-square&logo=fastapi&logoColor=white" />
     <img src="https://img.shields.io/badge/React-18-61dafb?style=flat-square&logo=react&logoColor=white" />
     <img src="https://img.shields.io/badge/Accuracy-99.16%25-f59e0b?style=flat-square" />
-    <img src="https://img.shields.io/badge/License-MIT-22c55e?style=flat-square" />
   </p>
 
   <br />
