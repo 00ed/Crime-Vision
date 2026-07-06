@@ -1,0 +1,37 @@
+# Environment — never commit secrets
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+
+# Model checkpoints (large files — store with Git LFS or HF Hub)
+*.pth
+*.pt
+*.bin
+
+# Logs
+logs/
+runs/
+debug.txt
+full_training_terminal.txt
+gpu_debug.txt
+test.py
+
+# Outputs
+evaluation_results*
+
+# IDE
+.vscode/settings.json
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local Backups
+Backup/

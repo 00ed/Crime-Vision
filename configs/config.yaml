@@ -1,0 +1,82 @@
+paths:
+  data_dir: "${DCSASS_PATH}"
+  checkpoint_dir: "checkpoints"
+  log_dir: "logs"
+
+
+dataset:
+  classes:
+    - Abuse
+    - Arrest
+    - Arson
+    - Assault
+    - Burglary
+    - Explosion
+    - Fighting
+    - RoadAccidents
+    - Robbery
+    - Shooting
+    - Shoplifting
+    - Stealing
+    - Vandalism
+  # Folders inside DCSASS that are NOT classes (skip them)
+  skip_folders:
+    - Labels
+  num_frames: 16
+  frame_size: 224
+  val_split: 0.15
+  test_split: 0.10
+  seed: 42
+
+# Stage 1: Binary classifier
+binary:
+  labels_dir: "${DCSASS_PATH}/Labels"   # folder containing the 13 CSVs
+  # Column names inside each CSV
+  col_clip:  "Abuse001_x264_0"          # first col — clip name (header is dynamic)
+  col_label: "0"                        # second col — 0=normal / 1=abnormal
+  # X3D-S config
+  model_name: "facebook/timesformer-base-finetuned-k400" 
+  use_x3d: true                         # true = torchvision X3D-S, false = TimeSformer
+  num_frames: 16
+  frame_size: 182                       # X3D-S native input size
+  dropout: 0.3
+  # Training
+  batch_size: 8                         # X3D-S is light, can afford larger batch
+  epochs: 20
+  lr: 1.0e-4
+  weight_decay: 1.0e-4
+  warmup_epochs: 2
+  patience: 5
+  grad_clip: 1.0
+  num_workers: 4
+  val_split: 0.15
+  test_split: 0.10
+  # Inference threshold — above this → abnormal → run Stage 2
+  abnormal_threshold: 0.5
+
+model:
+  name: "MCG-NJU/videomae-base"
+  dropout: 0.3
+  freeze_encoder: true   # frozen during warmup, unfrozen after
+
+training:
+  batch_size: 4          # lower to 2 if VRAM < 16 GB
+  epochs: 30
+  lr: 2.0e-5
+  weight_decay: 1.0e-4
+  warmup_epochs: 3
+  patience: 7            # early-stopping patience
+  unfreeze_layers: 4     # how many ViT blocks to unfreeze after warmup
+  unfreeze_lr_factor: 0.1
+  grad_clip: 1.0
+  num_workers: 8
+
+augmentation:
+  mean: [0.485, 0.456, 0.406]
+  std:  [0.229, 0.224, 0.225]
+  flip_prob: 0.5
+  scale_min: 0.9
+  scale_max: 1.0
+  brightness_min: 0.85
+  brightness_max: 1.15
+  contrast_delta: 10     # ± pixel offset for brightness jitter
